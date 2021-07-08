@@ -13,6 +13,7 @@ export default function Show(props) {
       <h3 className="text--regular">
 
       {props.interview && props.interview.interviewer && props.interview.interviewer.name}
+      
 
         </h3>
     </section>

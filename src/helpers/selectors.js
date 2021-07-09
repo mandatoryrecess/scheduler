@@ -1,4 +1,4 @@
- export function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay(state, day) {
   const returnAppointmentDays = [];
   let appointmentId = [];
   for (let elm of state.days) {
@@ -12,3 +12,14 @@
   return returnAppointmentDays;
 }
 
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null;
+  }
+
+  const id = interview.interviewer;
+  const interviewer = state.interviewers[id];
+  const result = { ...interview, interviewer };
+
+  return result;
+}

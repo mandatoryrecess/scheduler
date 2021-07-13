@@ -40,3 +40,15 @@ export function getInterviewersForDay(state, day) {
 
   return results;
 }
+
+
+export function  getSpotsForDay(dayObj, appointments) {
+  let spots = 0;
+  for (const id of dayObj.appointments) {
+    const appointment = appointments[id];
+    if (!appointment.interview) {
+      spots++;
+    }
+  }
+  return spots;
+};

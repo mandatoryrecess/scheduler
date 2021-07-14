@@ -11,6 +11,7 @@ import Status from "./Status";
 import Error from "./Error";
 
 export default function Appointment(props) {
+  console.log("Props", props)
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -24,7 +25,7 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-
+  
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -54,7 +55,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       {props.time}
 
       <Header />
@@ -63,7 +64,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          interviewer={props.interview.interviewer || ""}
           onEdit={edit}
           onDelete={confirm}
         />
@@ -74,6 +75,10 @@ export default function Appointment(props) {
 
      {mode === DELETE && (
         <Status message="delete" > </Status>
+        )} 
+
+      {mode === SAVING && (
+        <Status message="saving" > </Status>
         )} 
 
     {mode === CONFIRM && (

@@ -64,7 +64,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer || ""}
+          interviewer={props.interview.interviewer || "Please Choose an"}
           onEdit={edit}
           onDelete={confirm}
         />

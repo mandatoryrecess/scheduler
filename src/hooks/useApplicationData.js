@@ -25,7 +25,6 @@ const useApplicationData = function () {
     });
   }, []);
 
-
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -36,20 +35,15 @@ const useApplicationData = function () {
       [id]: appointment,
     };
 
-     const dayObj = state.days.find((item) => item.name == state.day);
-     console.log("dayObj", dayObj)
-     const spots = getSpotsForDay(dayObj, appointments);
-     const newDay = { ...dayObj, spots };   
-     const newStateDays = state.days; 
-     console.log({newStateDays})
-     newStateDays[newDay.id -1] = newDay
-     console.log("newStateDays from like 84 updated", newStateDays )    
-     
-    return axios
-      .put(`/api/appointments/${id}`, { interview })
-      .then(() => {
-        setState({...state, appointments, days:newStateDays })
-      });
+    const dayObj = state.days.find((item) => item.name == state.day);
+    const spots = getSpotsForDay(dayObj, appointments);
+    const newDay = { ...dayObj, spots };
+    const newStateDays = state.days;
+    newStateDays[newDay.id - 1] = newDay;
+
+    return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
+      setState({ ...state, appointments, days: newStateDays });
+    });
   }
 
   function cancelInterview(id, interview) {
@@ -63,24 +57,17 @@ const useApplicationData = function () {
     };
 
     const dayObj = state.days.find((item) => item.name == state.day);
-     const spots = getSpotsForDay(dayObj, appointments);
-     const newDay = { ...dayObj, spots };
-     const newStateDays = state.days; 
-     console.log({newStateDays})
-     newStateDays[newDay.id -1] = newDay
+    const spots = getSpotsForDay(dayObj, appointments);
+    const newDay = { ...dayObj, spots };
+    const newStateDays = state.days;
+    newStateDays[newDay.id - 1] = newDay;
 
-    return axios.delete(`/api/appointments/${id}`)
-    .then(() => {
-      setState({...state, appointments, days:newStateDays })
+    return axios.delete(`/api/appointments/${id}`).then(() => {
+      setState({ ...state, appointments, days: newStateDays });
     });
-
   }
-
 
   return { state, setDay, bookInterview, cancelInterview };
 };
 
 export default useApplicationData;
-
-
- 

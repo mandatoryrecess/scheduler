@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "components/Appointment/styles.scss";
 import Header from "components/Appointment/Header";
 import Show from "components/Appointment/Show";
@@ -11,7 +10,6 @@ import Status from "./Status";
 import Error from "./Error";
 
 export default function Appointment(props) {
-  console.log("Props", props)
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -64,7 +62,7 @@ export default function Appointment(props) {
       {mode === SHOW && (
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer || "Please Choose an"}
+          interviewer={props.interview.interviewer || "" }
           onEdit={edit}
           onDelete={confirm}
         />
@@ -86,7 +84,8 @@ export default function Appointment(props) {
         )} 
 
     {mode === EDIT && (
-    <Form name={props.interview.student} interviewers={props.interviewers} onCancel={back} onSave={save} />
+    
+    <Form name={props.interview.student} interviewers={props.interviewers} interviewer={props.interview.interviewer.id} onCancel={back} onSave={save} />
     )}
 
     {mode === ERROR_SAVE && (

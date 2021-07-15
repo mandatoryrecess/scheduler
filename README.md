@@ -8,6 +8,12 @@ The user can choose a mentor based on profile photos
 The user can delete or edit the booking 
 Error implementation warning for unsuccessful saves and deletes
 
+## Images 
+!['Add New Interview Button '](https://github.com/mandatoryrecess/scheduler/blob/42e0f6a6188b37badcba9b70b0ed9542f210c4cd/docs/add_interview_button.png)
+!['Daylist highligh'](https://github.com/mandatoryrecess/scheduler/blob/42e0f6a6188b37badcba9b70b0ed9542f210c4cd/docs/dayList_highlighted.png)
+!['Delete confirmation'](https://github.com/mandatoryrecess/scheduler/blob/42e0f6a6188b37badcba9b70b0ed9542f210c4cd/docs/delete_confirmation.png)
+!['Interview Form'](https://github.com/mandatoryrecess/scheduler/blob/42e0f6a6188b37badcba9b70b0ed9542f210c4cd/docs/interview_form.png)
+
 # Get Started 
 
 ## DevDependencies 

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
-  console.log('PROPS.INTERVIEW from line 7 in form.jsx', props.interviewer)
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
@@ -21,15 +20,14 @@ export default function Form(props) {
       setError("student name cannot be blank");
       return;
     }
-    console.log("interviewer from function validate form.jsx", interviewer)
+
     if (!interviewer) {
-      setError("no interviewer chosen")
+      setError("no interviewer chosen");
       return;
     }
     setError("");
     props.onSave(name, interviewer);
   }
-  console.log("INTERVIEWER line 31 FORM", interviewer)
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -46,7 +44,7 @@ export default function Form(props) {
             }}
             data-testid="student-name-input"
           />
-        <section className="appointment__validation">{error}</section>
+          <section className="appointment__validation">{error}</section>
         </form>
         <InterviewerList
           interviewers={props.interviewers}
@@ -61,7 +59,7 @@ export default function Form(props) {
             Cancel
           </Button>
           <Button
-          id="SaveButton"
+            id="SaveButton"
             confirm
             onClick={() => {
               validate(name, interviewer);
